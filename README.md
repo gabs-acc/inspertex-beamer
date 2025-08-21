@@ -5,8 +5,8 @@ Os modelos foram criados com foco em clareza, profissionalismo e flexibilidade.
 
 ## Estrutura do Repositório
 
-- `minimalista/`: modelo baseado no tema [mtheme (matze)](https://github.com/matze/mtheme), com estilo minimalista e moderno.
-- `robusto/`: modelo inspirado no [MIT Beamer Theme (jtriley)](https://github.com/jtriley/mit-beamer), mais estruturado e tradicional.
+- `minimalista/`: modelo baseado no tema [Metropolis](https://github.com/matze/mtheme), com estilo minimalista e moderno.
+- `robusto/`: modelo inspirado nos modelos da [Brown University](https://mathema.tician.de/brown-beamer-template) e do [MIT (triley)](https://github.com/jtriley/mit-beamer), mais estruturado e tradicional.
 
 ## Demonstrações Online
 
