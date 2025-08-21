@@ -1,0 +1,317 @@
+\begin{frame}{Sumário}
+  \setbeamertemplate{section in toc}[sections numbered]
+  \tableofcontents[hideallsubsections]
+\end{frame}
+
+\section{Introdução}
+
+\begin{frame}[fragile]{Metropolis}
+
+  O tema \themename é um tema do Beamer com ruído visual mínimo,
+  inspirado no \href{https://github.com/hsrmbeamertheme/hsrmbeamertheme}{Tema Beamer \textsc{hsrm}} de Benjamin Weiss.
+
+  Habilite o tema carregando:
+
+  \begin{verbatim}    \documentclass{beamer}
+    \usetheme{metropolis}\end{verbatim}
+
+  Note que você precisa ter a fonte \emph{Fira Sans} da Mozilla e o XeTeX
+  instalados para aproveitar essa tipografia maravilhosa.
+\end{frame}
+
+\begin{frame}[fragile]{Seções}
+  Seções agrupam slides do mesmo tópico
+
+  \begin{verbatim}    \section{Elementos}\end{verbatim}
+
+  para os quais o \themename fornece um bom indicador de progresso \ldots
+\end{frame}
+
+\section{Formatos de Título}
+
+\begin{frame}{Formatos de título do Metropolis}
+	\themename suporta 4 formatos de título diferentes:
+	\begin{itemize}
+		\item Regular
+		\item \textsc{Versalete}
+		\item \textsc{versalete completo}
+		\item MAIÚSCULAS
+	\end{itemize}
+	Eles podem ser definidos de forma global para todos os tipos de título ou individualmente.
+\end{frame}
+
+{
+    \metroset{titleformat frame=smallcaps}
+\begin{frame}{Versalete}
+	Este slide usa o formato de título \texttt{smallcaps}.
+
+	\begin{alertblock}{Possíveis Problemas}
+		Atenção: nem todas as fontes suportam versaletes. Se, por exemplo, você compilar sua apresentação com pdfTeX e a fonte Computer Modern Sans Serif, todo texto em versalete será renderizado com a fonte Computer Modern Serif.
+	\end{alertblock}
+\end{frame}
+}
+
+{
+\metroset{titleformat frame=allsmallcaps}
+\begin{frame}{Versalete Completo}
+	Este slide usa o formato de título \texttt{allsmallcaps}.
+
+	\begin{alertblock}{Possíveis Problemas}
+		Como esse formato também usa versaletes, você enfrentará os mesmos problemas que com o formato \texttt{smallcaps}. Além disso, esse formato pode causar outros problemas. Consulte a documentação se decidir usá-lo.
+
+		Regra geral: use-o apenas para títulos com texto puro.
+	\end{alertblock}
+\end{frame}
+}
+
+{
+\metroset{titleformat frame=allcaps}
+\begin{frame}{MAIÚSCULAS}
+	Este slide usa o formato de título \texttt{allcaps}.
+
+	\begin{alertblock}{Possíveis Problemas}
+		Este formato de título não é tão problemático quanto o formato \texttt{allsmallcaps}, mas basicamente sofre das mesmas limitações. Consulte a documentação se quiser utilizá-lo.
+	\end{alertblock}
+\end{frame}
+}
+
+\section{Elementos}
+
+\begin{frame}[fragile]{Tipografia}
+      \begin{verbatim}O tema fornece padrões razoáveis para
+\emph{enfatizar} texto, \alert{destacar} partes
+ou mostrar \textbf{resultados em negrito}.\end{verbatim}
+
+  \begin{center}torna-se\end{center}
+
+  O tema fornece padrões razoáveis para \emph{enfatizar} texto,
+  \alert{destacar} partes ou mostrar \textbf{resultados em negrito}.
+\end{frame}
+
+\begin{frame}{Teste de fontes}
+  \begin{itemize}
+    \item Regular
+    \item \textit{Itálico}
+    \item \textsc{Versalete}
+    \item \textbf{Negrito}
+    \item \textbf{\textit{Negrito Itálico}}
+    \item \textbf{\textsc{Negrito Versalete}}
+    \item \texttt{Monoespaçado}
+    \item \texttt{\textit{Monoespaçado Itálico}}
+    \item \texttt{\textbf{Monoespaçado Negrito}}
+    \item \texttt{\textbf{\textit{Monoespaçado Negrito Itálico}}}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Listas}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.33\textwidth}
+      Itens
+      \begin{itemize}
+        \item Leite \item Ovos \item Batatas
+      \end{itemize}
+
+    \column{0.33\textwidth}
+      Enumerações
+      \begin{enumerate}
+        \item Primeiro, \item Segundo e \item Último.
+      \end{enumerate}
+
+    \column{0.33\textwidth}
+      Descrições
+      \begin{description}
+        \item[PowerPoint] Meeh. \item[Beamer] Yeeeha.
+      \end{description}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Animação}
+  \begin{itemize}[<+- | alert@+>]
+    \item \alert<4>{Isto é\only<4>{ realmente} importante}
+    \item Agora isto
+    \item E agora isto
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Figuras}
+  \begin{figure}
+    \newcounter{density}
+    \setcounter{density}{20}
+    \begin{tikzpicture}
+      \def\couleur{alerted text.fg}
+      \path[coordinate] (0,0)  coordinate(A)
+                  ++( 90:5cm) coordinate(B)
+                  ++(0:5cm) coordinate(C)
+                  ++(-90:5cm) coordinate(D);
+      \draw[fill=\couleur!\thedensity] (A) -- (B) -- (C) --(D) -- cycle;
+      \foreach \x in {1,...,40}{%
+          \pgfmathsetcounter{density}{\thedensity+20}
+          \setcounter{density}{\thedensity}
+          \path[coordinate] coordinate(X) at (A){};
+          \path[coordinate] (A) -- (B) coordinate[pos=.10](A)
+                              -- (C) coordinate[pos=.10](B)
+                              -- (D) coordinate[pos=.10](C)
+                              -- (X) coordinate[pos=.10](D);
+          \draw[fill=\couleur!\thedensity] (A)--(B)--(C)-- (D) -- cycle;
+      }
+    \end{tikzpicture}
+    \caption{Quadrado rotacionado de
+    \href{http://www.texample.net/tikz/examples/rotated-polygons/}{texample.net}.}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Tabelas}
+  \begin{table}
+    \caption{Maiores cidades do mundo (fonte: Wikipedia)}
+    \begin{tabular}{@{} lr @{}}
+      \toprule
+      Cidade & População\\
+      \midrule
+      Cidade do México & 20.116.842\\
+      Xangai & 19.210.000\\
+      Pequim & 15.796.450\\
+      Istambul & 14.160.467\\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+\begin{frame}{Blocos}
+  Três tipos de blocos diferentes são pré-definidos e podem ter uma
+  cor de fundo opcional.
+
+  \begin{columns}[T,onlytextwidth]
+    \column{0.5\textwidth}
+      \begin{block}{Padrão}
+        Conteúdo do bloco.
+      \end{block}
+
+      \begin{alertblock}{Alerta}
+        Conteúdo do bloco.
+      \end{alertblock}
+
+      \begin{exampleblock}{Exemplo}
+        Conteúdo do bloco.
+      \end{exampleblock}
+
+    \column{0.5\textwidth}
+
+      \metroset{block=fill}
+
+      \begin{block}{Padrão}
+        Conteúdo do bloco.
+      \end{block}
+
+      \begin{alertblock}{Alerta}
+        Conteúdo do bloco.
+      \end{alertblock}
+
+      \begin{exampleblock}{Exemplo}
+        Conteúdo do bloco.
+      \end{exampleblock}
+
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Matemática}
+  \begin{equation*}
+    e = \lim_{n\to \infty} \left(1 + \frac{1}{n}\right)^n
+  \end{equation*}
+\end{frame}
+
+\begin{frame}{Gráficos de linha}
+  \begin{figure}
+    \begin{tikzpicture}
+      \begin{axis}[
+        mlineplot,
+        width=0.9\textwidth,
+        height=6cm,
+      ]
+
+        \addplot {sin(deg(x))};
+        \addplot+[samples=100] {sin(deg(2*x))};
+
+      \end{axis}
+    \end{tikzpicture}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Gráficos de barras}
+  \begin{figure}
+    \begin{tikzpicture}
+      \begin{axis}[
+        mbarplot,
+        xlabel={Foo},
+        ylabel={Bar},
+        width=0.9\textwidth,
+        height=6cm,
+      ]
+
+      \addplot plot coordinates {(1, 20) (2, 25) (3, 22.4) (4, 12.4)};
+      \addplot plot coordinates {(1, 18) (2, 24) (3, 23.5) (4, 13.2)};
+      \addplot plot coordinates {(1, 10) (2, 19) (3, 25) (4, 15.2)};
+
+      \legend{lorem, ipsum, dolor}
+
+      \end{axis}
+    \end{tikzpicture}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Citações}
+  \begin{quote}
+    Veni, Vidi, Vici
+  \end{quote}
+\end{frame}
+
+{%
+\setbeamertemplate{frame footer}{Meu rodapé personalizado}
+\begin{frame}[fragile]{Rodapé do slide}
+    \themename define um modelo Beamer personalizado para adicionar texto ao rodapé. Pode ser definido com:
+    \begin{verbatim}\setbeamertemplate{frame footer}{Meu rodapé personalizado}\end{verbatim}
+\end{frame}
+}
+
+\begin{frame}{Referências}
+  Algumas referências para demonstração [allowframebreaks] \cite{knuth92,ConcreteMath,Simpson,Er01,greenwade93}
+\end{frame}
+
+\section{Conclusão}
+
+\begin{frame}{Resumo}
+
+  Obtenha o código-fonte deste tema e da apresentação de demonstração em:
+
+  \begin{center}\url{github.com/gabs-acc/beamertheme-insper}\end{center}
+
+  O tema \emph{em si} é licenciado sob a
+  \href{http://creativecommons.org/licenses/by-sa/4.0/}{Licença Creative Commons
+  Atribuição-CompartilhaIgual 4.0 Internacional}.
+
+  \begin{center}\ccbysa\end{center}
+
+\end{frame}
+
+\begin{frame}[standout]
+  Perguntas?
+\end{frame}
+
+\appendix
+
+\begin{frame}[fragile]{Slides de backup}
+  Às vezes é útil adicionar slides ao final da sua apresentação para
+  consulta durante perguntas da audiência.
+
+  A melhor forma de fazer isso é incluir o pacote \verb|appendixnumberbeamer|
+  no preâmbulo e usar \verb|\appendix| antes dos slides de backup.
+
+  O \themename desativa automaticamente a numeração de slides e a barra de progresso
+  para slides no apêndice.
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Referências}
+
+  \bibliography{referencias}
+  \bibliographystyle{abbrv}
+
+\end{frame}

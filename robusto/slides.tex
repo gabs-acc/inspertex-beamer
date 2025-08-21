@@ -1,0 +1,126 @@
+\documentclass[aspectratio=169]{beamer}
+
+% --- Tema Brown/MIT (exemplo, ajuste conforme instalação/localização) ---
+\usetheme{Berlin}
+\usecolortheme{mit}
+
+\usepackage{tikz}
+
+\usepackage{appendixnumberbeamer}
+
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+
+\usepackage{xspace}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+\usepackage[backend=biber, style=authoryear]{biblatex}
+\addbibresource{referencias.bib}
+
+\iffalse
+% --- CUSTOMIZAÇÃO DA CAPA ---
+\setbeamertemplate{title page}
+{%
+  \begin{tikzpicture}[remember picture,overlay]
+    % PDF de fundo (ocupa a página inteira)
+    \node[at=(current page.center)] {
+      \includegraphics[width=\paperwidth,height=\paperheight]{fundo_capa.pdf}
+    };
+
+    % --- Texto em posições específicas ---
+    % Título
+    \node[anchor=west] at ([xshift=4.1cm,yshift=6.5     cm]current page.south west)
+      {\usebeamerfont{title}\inserttitle};
+
+    % Autor
+    \node[anchor=west] at ([xshift=4.1cm,yshift=4.5cm]current page.south west)
+      {\usebeamerfont{author}\insertauthor};
+
+    % Data
+    \node[anchor=west] at ([xshift=2cm,yshift=0.6cm]current page.south west)
+      {\usebeamerfont{date}\insertdate};
+  \end{tikzpicture}
+}
+\fi
+
+% --- CUSTOMIZAÇÃO DA CAPA ---
+\setbeamertemplate{title page}
+{%
+  \begin{tikzpicture}[remember picture,overlay]
+    % PDF de fundo ocupa toda a página
+    \node[at=(current page.center)] {
+      \includegraphics[width=\paperwidth,height=\paperheight]{fundo_capa.pdf}
+    };
+
+    % --- Texto em posições absolutas ---
+
+    % Título
+    \node[anchor=west,text width=0.45\paperwidth] 
+      at ([xshift=4.1cm,yshift=6.5cm]current page.south west)
+      {\usebeamerfont{title}\LARGE\textbf\inserttitle};
+
+    % Autores
+    \node[anchor=west,text width=0.6\paperwidth] 
+      at ([xshift=4.1cm,yshift=4.5cm]current page.south west)
+      {\usebeamerfont{author}\insertauthor};
+
+    % Data
+    \node[anchor=east] 
+      at ([xshift=-0.8cm,yshift=2.0cm]current page.south east)
+      {\usebeamerfont{date}\insertdate};
+
+    % Centro/Núcleo
+    \node[anchor=east,font=\bfseries] 
+      at ([xshift=-0.8cm,yshift=1.2cm]current page.south east)
+      {\insertinstitute};
+  \end{tikzpicture}
+}
+
+% --- DADOS DO USUÁRIO ---
+\title{Título da Pesquisa e/ou relatório elaborado}
+\author{Autor 1\\
+    Autor 2\\
+    Autor 3\\
+    Autor 4}
+\date{24 de março, 2025}
+\institute{Nome do centro/núcleo/iniciativa}
+
+\iffalse
+\pgfdeclareimage[height=0.5cm]{logo-insper-preto}{logo-insper-preto.pdf}
+\logo{\pgfuseimage{logo-insper-preto}\hspace*{0.3cm}}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Conteúdo}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+\beamerdefaultoverlayspecification{<+->}
+\fi
+
+\pgfdeclareimage[height=0.5cm]{logo-insper-preto}{logo-insper-preto.pdf}
+\logo{\pgfuseimage{logo-insper-preto}\hspace*{0.3cm}}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Conteúdo}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+% Slide de capa
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\input{conteudo}
+
+\end{document}

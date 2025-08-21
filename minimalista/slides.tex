@@ -1,0 +1,68 @@
+\documentclass[aspectratio=169]{beamer}
+
+% Tema base
+\usetheme{metropolis}
+\usepackage{insper-mtheme}
+
+\usepackage{appendixnumberbeamer}
+
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+
+\usepackage{xspace}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+% --- CUSTOMIZAÇÃO DA CAPA ---
+\setbeamertemplate{title page}
+{%
+  \begin{tikzpicture}[remember picture,overlay]
+    % PDF de fundo ocupa toda a página
+    \node[at=(current page.center)] {
+      \includegraphics[width=\paperwidth,height=\paperheight]{fundo_capa.pdf}
+    };
+
+    % --- Texto em posições absolutas ---
+
+    % Título
+    \node[anchor=west,text width=0.6\paperwidth] 
+      at ([xshift=1.3cm,yshift=5.5cm]current page.south west)
+      {\usebeamerfont{title}\inserttitle};
+
+    % Autores
+    \node[anchor=west,text width=0.6\paperwidth] 
+      at ([xshift=1.3cm,yshift=3.5cm]current page.south west)
+      {\usebeamerfont{author}\insertauthor};
+
+    % Data
+    \node[anchor=east] 
+      at ([xshift=-0.8cm,yshift=2.0cm]current page.south east)
+      {\usebeamerfont{date}\insertdate};
+
+    % Centro/Núcleo
+    \node[anchor=east,font=\bfseries] 
+      at ([xshift=-0.8cm,yshift=1.2cm]current page.south east)
+      {\insertinstitute};
+  \end{tikzpicture}
+}
+
+% --- DADOS DO USUÁRIO ---
+\title{Título da Pesquisa e/ou relatório elaborado}
+\author{Autor 1\\
+    Autor 2\\
+    Autor 3\\
+    Autor 4}
+\date{24 de março, 2025}
+\institute{Nome do centro/núcleo/iniciativa}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\input{conteudo}
+
+\end{document}
